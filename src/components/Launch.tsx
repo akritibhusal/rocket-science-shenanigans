@@ -1,7 +1,9 @@
 import { LaunchData } from "../types";
 
 type LaunchProps = {
+  index: number;
   launch: LaunchData;
+  removeLaunchItem: (index: number) => void;
 };
 
 const getDate = (dateString: string) => {
@@ -22,7 +24,11 @@ const getDate = (dateString: string) => {
   return `${day} ${month} ${year} ${time}`;
 };
 
-const Launch = ({ launch }: LaunchProps) => {
+const Launch = ({ index, launch, removeLaunchItem }: LaunchProps) => {
+  const handleClick = (index: number) => {
+    removeLaunchItem(index);
+  };
+
   return (
     <div className="launch">
       <div className="launch__flight-number">{launch.flight_number}</div>
@@ -42,6 +48,9 @@ const Launch = ({ launch }: LaunchProps) => {
         <div className="launch__rocket-name">{launch.rocket.rocket_name}</div>
         <div className="launch__rocket-type">{launch.rocket.rocket_type}</div>
       </div>
+      <button className="launch__button" onClick={() => handleClick(index)}>
+        Hide
+      </button>
     </div>
   );
 };

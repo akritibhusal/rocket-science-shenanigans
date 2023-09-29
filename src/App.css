@@ -98,4 +98,18 @@ body {
   color: #586068;
 }
 
+.launch__button {
+  border: none;
+  padding: 4px 18px;
+  margin-top: 16px;
+  color: #213547;
+  background-color: #e9edf0;
+  border: 8px solid #e9edf0;
+  transition: all 0.4s ease;
+}
+
+.launch__button:hover {
+  border-color: #ccd7e0;
+  transform: scale(1.1);
+}
 

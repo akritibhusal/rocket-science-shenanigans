@@ -10,21 +10,36 @@ function App() {
 
   useEffect(() => {
     const getLaunches = async () => {
-      const response = await fetch(API_URL);
-      const data = await response.json();
-
-      setLaunches(data);
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        setLaunches(data);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     getLaunches();
   }, []);
+
+  const removeLaunchItem = (index: number) => {
+    const newLaunches = structuredClone(launches);
+    newLaunches.splice(index, 1);
+
+    setLaunches(newLaunches);
+  };
 
   return (
     <section className="app">
       <h1 className="title">SpaceX Launches</h1>
       <div className="launches">
         {launches.map((launch, index) => (
-          <Launch launch={launch} key={index} />
+          <Launch
+            launch={launch}
+            key={index}
+            index={index}
+            removeLaunchItem={removeLaunchItem}
+          />
         ))}
       </div>
     </section>
