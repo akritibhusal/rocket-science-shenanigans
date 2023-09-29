@@ -113,3 +113,35 @@ body {
   transform: scale(1.1);
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.pagination__button {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: none;
+  border: none;
+  padding: 18px 24px;
+  margin: 16px;
+  color: #213547;
+  background-color: #e9edf0;
+  border: 8px solid #e9edf0;
+  font-size: 32px;
+  font-family: 'Pixelify Sans', cursive;
+  transition: all 0.4s ease;
+}
+
+.pagination__button.is-active {
+  opacity: 1;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.pagination__button:hover {
+  background-color: #ffffff;
+  border-color: #ccd7e0;
+}

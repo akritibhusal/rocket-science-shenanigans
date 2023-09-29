@@ -2,25 +2,39 @@ import { useEffect, useState } from "react";
 import { LaunchData } from "./types";
 import "./App.css";
 import Launch from "./components/Launch";
+import Pagination from "./components/Pagination";
 
 const API_URL = "https://api.spacexdata.com/v3/launches";
+const PER_PAGE = 10;
 
 function App() {
   const [launches, setLaunches] = useState<LaunchData[]>([]);
+  const [pageOffset, setPageOffset] = useState(0);
+
+  const updatePage = (newPageValue: number) => {
+    newPageValue > 0 && setPageOffset(newPageValue);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   useEffect(() => {
     const getLaunches = async () => {
+      const params = `?limit=${PER_PAGE}&offset=${pageOffset * PER_PAGE}`;
       try {
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL + params);
         const data = await response.json();
-        setLaunches(data);
+
+        data.length > 0 ? setLaunches(data) : updatePage(pageOffset - 1);
       } catch (error) {
         console.error(error);
       }
     };
 
     getLaunches();
-  }, []);
+  }, [pageOffset]);
 
   const removeLaunchItem = (index: number) => {
     const newLaunches = structuredClone(launches);
@@ -42,6 +56,7 @@ function App() {
           />
         ))}
       </div>
+      <Pagination pageOffset={pageOffset} updatePage={updatePage} />
     </section>
   );
 }
