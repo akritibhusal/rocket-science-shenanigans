@@ -1,0 +1,101 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  background-color: #e9edf0;
+  font-family: 'Inclusive Sans', sans-serif;
+}
+
+.title {
+  font-size: 64px;
+  font-weight: normal;
+  font-family: 'Pixelify Sans', cursive;
+  color: #5c7184;
+}
+
+.launches {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.launch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  padding: 32px;
+  background-color: #ffffff;
+  border: 10px solid #ccd7e0;
+  position: relative;
+  transition: all 0.2s ease-in;
+  min-width: 240px;
+}
+
+.launch:hover {
+  transform: translate(-10px, -10px);
+  box-shadow: 10px 10px 0 rgb(167, 176, 183);
+}
+
+.launch__flight-number {
+  font-size: 28px;
+  font-weight: 500;
+  color: #c1c7cb;
+  position: absolute;
+  top: 0px;
+  left: 8px;
+}
+
+.launch__mission {
+  margin: 0 0 4px;
+  color: #213547;
+  font-size: 28px;
+  font-weight: normal;
+  font-family: 'Pixelify Sans', cursive;
+}
+
+.launch__rocket-icon {
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+.launch__rocket-name {
+  margin-bottom: 4px;
+  font-family: 'Pixelify Sans', cursive;
+}
+
+.launch__rocket-type {
+  color: #7e858b;
+}
+
+.launch__status {
+  width: fit-content;
+  margin: 10px 0;
+  padding: 0 4px;
+  color: #1e251f;
+  border-radius: 2px;
+  background-color: #b7e7d6;
+}
+
+.launch__status.is-failure {
+  color: rgb(57, 49, 49);
+  background-color: rgb(255, 237, 230);
+}
+
+.launch__date,
+.launch__year {
+  color: #7e858b;
+}
+
+.launch__site {
+  margin-top: 8px;
+  color: #586068;
+}
+
+
